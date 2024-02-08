@@ -262,6 +262,73 @@ namespace Lab2CSharp
             Print2DArray(result);
         }
 
+        static int[][] GenerateRandomStepArray(int n, int minValue, int maxValue)
+        {
+            int[][] array = new int[n][];
+            Random random = new Random();
+
+            for (int i = 0; i < n; i++)
+            {
+                array[i] = new int[i + 1];
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < array[i].Length; j++)
+                {
+                    array[i][j] = random.Next(minValue, maxValue + 1);
+                }
+            }
+
+            return array;
+        }
+
+        static int[] CalculateSums(int[][] array, int k1, int k2)
+        {
+            int[] sums = new int[array.Length];
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                for (int j = k1 - 1; j < k2 && j < array[i].Length; j++)
+                {
+                    sums[i] += array[i][j];
+                }
+            }
+
+            return sums;
+        }
+
+        static void PrintMatrix(int[][] a)
+        {
+            for (int i = 0; i < a.Length; ++i, Console.WriteLine())
+            for (int j = 0; j < a[i].Length; ++j)
+                Console.Write("{0,5}", a[i][j]);
+
+            Console.WriteLine();
+        }
+
+        static void Task4()
+        {
+            Console.WriteLine("Input row size matrix:");
+            int n = int.Parse(Console.ReadLine());
+            int[][] matrix = GenerateRandomStepArray(n, -100, 100);
+            Console.WriteLine("Matrix:");
+            PrintMatrix(matrix);
+
+            Console.WriteLine("Input k1:");
+            int k1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Input k2:");
+            int k2 = int.Parse(Console.ReadLine());
+
+            int[] sums = CalculateSums(matrix, k1, k2);
+            Console.WriteLine("Sums for each row from k1 to k2:");
+            foreach (var sum in sums)
+            {
+                Console.WriteLine(sum + " ");
+            }
+            Console.WriteLine();
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine("Lab 2 CSharp");
@@ -293,9 +360,9 @@ namespace Lab2CSharp
                         Task3();
                         break;
 
-                    /*     case "4":
-                             task5_10();
-                             break;*/
+                    case "4":
+                        Task4();
+                        break;
                     case "5":
                         return;
 
