@@ -187,6 +187,7 @@ namespace Lab2CSharp
             for (int i = 0; i < size; i++)
             {
                 array[i] = random.NextDouble() * (100 - 1) + 1;
+                array[i] = Math.Round(array[i], 2);
             }
             Console.WriteLine("Array:");
             for (int i = 0; i < size; i++)
@@ -203,7 +204,7 @@ namespace Lab2CSharp
                     lastIndex = i;
                 }
             }
-
+            Console.WriteLine("");
             Console.WriteLine($"The number of the last minimum element: {lastIndex + 1}");
         }
 
