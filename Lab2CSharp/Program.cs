@@ -176,6 +176,37 @@ namespace Lab2CSharp
             }
         }
 
+        static void Taks2()
+        {
+            Random random = new Random();
+            Console.WriteLine("Input array size:");
+            int size = int.Parse(Console.ReadLine());
+
+            double[] array = new double[size];
+
+            for (int i = 0; i < size; i++)
+            {
+                array[i] = random.NextDouble() * (100 - 1) + 1;
+            }
+            Console.WriteLine("Array:");
+            for (int i = 0; i < size; i++)
+            {
+                Console.Write($"{array[i]} ");
+            }
+            double min = array[0];
+            int lastIndex = 0;
+            for (int i = 1; i < size; i++)
+            {
+                if (array[i] <= min)
+                {
+                    min = array[i];
+                    lastIndex = i;
+                }
+            }
+
+            Console.WriteLine($"The number of the last minimum element: {lastIndex + 1}");
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine("Lab 2 CSharp");
@@ -198,11 +229,11 @@ namespace Lab2CSharp
                     case "1":
                         Task1();
                         break;
+
+                    case "2":
+                        Taks2();
+                        break;
                     /*
-                                        case "2":
-                                            task3_10();
-                                            break;
-                    
                                         case "3":
                                             task4_10();
                                             break;
