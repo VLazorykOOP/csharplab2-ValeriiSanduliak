@@ -207,6 +207,61 @@ namespace Lab2CSharp
             Console.WriteLine($"The number of the last minimum element: {lastIndex + 1}");
         }
 
+        static int[,] Pow(int[,] matrix, int exponent)
+        {
+            int n = matrix.GetLength(0);
+            int[,] result = new int[n, n];
+
+            for (int i = 0; i < n; i++)
+            {
+                result[i, i] = 1;
+            }
+
+            for (int i = 0; i < exponent; i++)
+            {
+                result = Multiply(result, matrix);
+            }
+
+            return result;
+        }
+
+        static int[,] Multiply(int[,] matrix1, int[,] matrix2)
+        {
+            int n = matrix1.GetLength(0);
+            int[,] result = new int[n, n];
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    for (int k = 0; k < n; k++)
+                    {
+                        result[i, j] += matrix1[i, k] * matrix2[k, j];
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        static void Task3()
+        {
+            Console.WriteLine("Input size array2D:");
+            int n = int.Parse(Console.ReadLine());
+
+            int[,] array2D = GenerateRandom2DArray(n, n);
+
+            Print2DArray(array2D);
+
+            Console.WriteLine("Enter the power of n to calculate A^n:");
+            int exponent = int.Parse(Console.ReadLine());
+
+            int[,] result = Pow(array2D, exponent);
+
+            Console.WriteLine($"The result of the calculation A^{exponent}:");
+            Print2DArray(result);
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine("Lab 2 CSharp");
@@ -233,14 +288,14 @@ namespace Lab2CSharp
                     case "2":
                         Taks2();
                         break;
-                    /*
-                                        case "3":
-                                            task4_10();
-                                            break;
-                    
-                                        case "4":
-                                            task5_10();
-                                            break;*/
+
+                    case "3":
+                        Task3();
+                        break;
+
+                    /*     case "4":
+                             task5_10();
+                             break;*/
                     case "5":
                         return;
 
