@@ -176,7 +176,7 @@ namespace Lab2CSharp
             }
         }
 
-        static void Taks2()
+        static void Task2()
         {
             Random random = new Random();
             Console.WriteLine("Input array size:");
@@ -354,7 +354,7 @@ namespace Lab2CSharp
                         break;
 
                     case "2":
-                        Taks2();
+                        Task2();
                         break;
 
                     case "3":
