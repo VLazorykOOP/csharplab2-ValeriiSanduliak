@@ -267,10 +267,12 @@ namespace Lab2CSharp
         {
             int[][] array = new int[n][];
             Random random = new Random();
-
+            int k; 
+          
             for (int i = 0; i < n; i++)
             {
-                array[i] = new int[i + 1];
+                  k =  random.Next(1, n);
+                array[i] = new int[k];
             }
 
             for (int i = 0; i < n; i++)
